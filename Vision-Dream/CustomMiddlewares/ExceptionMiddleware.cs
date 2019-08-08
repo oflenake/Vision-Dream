@@ -1,0 +1,76 @@
+﻿#region Proprietary Information
+/* 
+    * Created by:   Vision-Dream ICT Solutions
+    * Author:       Onkgopotse Lenake
+    * Email:        visiondreamict@gmail.com
+    * Website:      www.visiondreamict.wordpress.com
+    * 
+    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * ___________________________________________________________________
+    * Project:      Vision-Dream .Net Core 2.1 (Vision-Dream) Library
+    *               Project Targeting .Net Core 2.1.
+    * Version:      v1.0.0
+    * File:         ExceptionMiddleware.cs
+    * Date:         2019-01-10
+    * Description:  This file contains the ExceptionMiddleware class. 
+    *               Class execution code.
+*/
+#endregion
+
+using System;
+using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Vision_Dream.AppModels;
+using Vision_Dream.ContractsService;
+
+namespace Vision_Dream.CustomMiddlewares
+{
+    public class ExceptionMiddleware
+    {
+        #region Fields
+
+        private readonly RequestDelegate _next;
+        private readonly ILoggerManager _logger;
+        #endregion
+
+        #region Constructor
+
+        public ExceptionMiddleware(RequestDelegate next, ILoggerManager logger)
+        {
+            _logger = logger;
+            _next = next;
+        }
+        #endregion
+
+        #region Public Methods
+        public async Task InvokeAsync(HttpContext httpContext)
+        {
+            try
+            {
+                await _next(httpContext);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong.{Environment.NewLine}Details: {ex}");
+                await HandleExceptionAsync(httpContext, ex);
+            }
+        }
+        #endregion
+
+        #region Private Methods
+
+        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            return context.Response.WriteAsync(new ErrorDetails()
+            {
+                StatusCode = context.Response.StatusCode,
+                Message = "Internal Server Error from the custom middleware."
+            }.ToString());
+        }
+        #endregion
+    }
+}

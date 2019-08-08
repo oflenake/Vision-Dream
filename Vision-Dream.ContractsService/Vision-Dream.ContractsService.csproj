@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>Vision_Dream.ContractsService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vision-Dream.EntitiesService\Vision-Dream.EntitiesService.csproj" />
+  </ItemGroup>
+
+</Project>
