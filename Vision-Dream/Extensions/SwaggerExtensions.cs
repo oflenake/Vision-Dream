@@ -34,7 +34,7 @@ namespace Vision_Dream.Extensions
     /// Swagger configuration in asp.net core for swagger version > 2.0.
     /// Reference From : https://ppolyzos.com/2017/10/30/add-jwt-bearer-authorization-to-swagger-and-asp-net-core/
     /// </summary>
-    public static class SwaggerServiceExtensions
+    public static class SwaggerExtensions
     {
         public static string _APIAppName { get; set; }
         public static string _APIAppVersion { get; set; }

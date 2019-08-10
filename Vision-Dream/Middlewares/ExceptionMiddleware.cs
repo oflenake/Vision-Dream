@@ -7,8 +7,8 @@
     * 
     * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
     * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core 2.1 (Vision-Dream) Library
-    *               Project Targeting .Net Core 2.1.
+    * Project:      Vision-Dream .Net Core 2.2 (Vision-Dream) Library
+    *               Project Targeting .Net Core 2.2.
     * Version:      v1.0.0
     * File:         ExceptionMiddleware.cs
     * Date:         2019-01-10
@@ -24,7 +24,7 @@ using Microsoft.AspNetCore.Http;
 using Vision_Dream.AppModels;
 using Vision_Dream.ContractsService;
 
-namespace Vision_Dream.CustomMiddlewares
+namespace Vision_Dream.Middlewares
 {
     public class ExceptionMiddleware
     {
@@ -68,7 +68,7 @@ namespace Vision_Dream.CustomMiddlewares
             return context.Response.WriteAsync(new ErrorDetails()
             {
                 StatusCode = context.Response.StatusCode,
-                Message = "Internal Server Error from the custom middleware."
+                Message = "Internal Server Error from the exception middleware."
             }.ToString());
         }
         #endregion

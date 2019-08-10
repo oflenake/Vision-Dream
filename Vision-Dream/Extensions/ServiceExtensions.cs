@@ -45,7 +45,7 @@ namespace Vision_Dream.Extensions
         }
 
         // IIS configuration
-        public static void ConfigureIISIntegration(this IServiceCollection services)
+        public static void ConfigureIIS(this IServiceCollection services)
         {
             services.Configure<IISOptions>(options =>
             {
@@ -54,7 +54,7 @@ namespace Vision_Dream.Extensions
         }
 
         // Custom Logger configuration
-        public static void ConfigureLoggerService(this IServiceCollection services)
+        public static void ConfigureLogger(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerManager, LoggerManager>();
         }
@@ -62,39 +62,39 @@ namespace Vision_Dream.Extensions
         // SQL DBContext Connection Configuration
         // With the help of the IConfiguration config parameter, we can access the 
         // appsettings.json file and take all the settings data that we need from it.
-        public static void ConfigureSQLDBContextDefaultDev(this IServiceCollection services, IConfiguration config)
+        public static void ConfigureSQLDefaultDEV(this IServiceCollection services, IConfiguration config)
         {
-            var sqlConnString = config["SQLStringDefaultDev:DBConnDefaultDev"];
+            var sqlConnString = config["SQLStringDefaultDEV:DBConnDefaultDEV"];
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(sqlConnString));
         }
 
-        public static void ConfigureSQLDBContextDefaultPrd(this IServiceCollection services, IConfiguration config)
+        public static void ConfigureSQLDefaultPRD(this IServiceCollection services, IConfiguration config)
         {
-            var sqlConnString = config["SQLStringDefaultPrd:DBConnDefaultPrd"];
+            var sqlConnString = config["SQLStringDefaultPRD:DBConnDefaultPRD"];
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(sqlConnString));
         }
 
-        public static void ConfigureSQLDBContextReportingDev(this IServiceCollection services, IConfiguration config)
+        public static void ConfigureSQLReportingDEV(this IServiceCollection services, IConfiguration config)
         {
-            var sqlConnString = config["SQLStringReportingDev:DBConnReportingDev"];
+            var sqlConnString = config["SQLStringReportingDEV:DBConnReportingDEV"];
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(sqlConnString));
         }
 
-        public static void ConfigureSQLDBContextReportingPrd(this IServiceCollection services, IConfiguration config)
+        public static void ConfigureSQLReportingPRD(this IServiceCollection services, IConfiguration config)
         {
-            var sqlConnString = config["SQLStringReportingPrd:DBConnReportingPrd"];
+            var sqlConnString = config["SQLStringReportingPRD:DBConnReportingPRD"];
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(sqlConnString));
         }
 
-        public static void ConfigureSQLDBContextTransactionalDev(this IServiceCollection services, IConfiguration config)
+        public static void ConfigureSQLTransactionalDEV(this IServiceCollection services, IConfiguration config)
         {
-            var sqlConnString = config["SQLStringTransactionalDev:DBConnTransactionalDev"];
+            var sqlConnString = config["SQLStringTransactionalDEV:DBConnTransactionalDEV"];
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(sqlConnString));
         }
 
-        public static void ConfigureSQLDBContextTransactionalPrd(this IServiceCollection services, IConfiguration config)
+        public static void ConfigureSQLTransactionalPRD(this IServiceCollection services, IConfiguration config)
         {
-            var sqlConnString = config["SQLStringTransactionalPrd:DBConnTransactionalPrd"];
+            var sqlConnString = config["SQLStringTransactionalPRD:DBConnTransactionalPRD"];
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(sqlConnString));
         }
 

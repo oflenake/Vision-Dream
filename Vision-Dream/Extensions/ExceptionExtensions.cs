@@ -10,9 +10,9 @@
     * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
-    * File:         ExceptionMiddlewareExtensions.cs
+    * File:         ExceptionExtensions.cs
     * Date:         2019-01-10
-    * Description:  This file contains the ExceptionMiddlewareExtensions class. 
+    * Description:  This file contains the ExceptionExtensions class. 
     *               Class execution code.
 */
 #endregion
@@ -24,16 +24,16 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Vision_Dream.AppModels;
 using Vision_Dream.ContractsService;
-using Vision_Dream.CustomMiddlewares;
+using Vision_Dream.Middlewares;
 
 namespace Vision_Dream.Extensions
 {
-    public static class ExceptionMiddlewareExtensions
+    public static class ExceptionExtensions
     {
-        public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILoggerManager logger)
+        public static void ConfigureExceptionHandler(this IApplicationBuilder appExHandler, ILoggerManager logger)
         {
             // Extension method that registers the UseExceptionHandler middleware
-            app.UseExceptionHandler(appError =>
+            appExHandler.UseExceptionHandler(appError =>
             {
                 appError.Run(async context =>
                 {
@@ -55,9 +55,9 @@ namespace Vision_Dream.Extensions
             });
         }
 
-        public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
+        public static void ConfigureExceptionMiddleware(this IApplicationBuilder appExMiddleware)
         {
-            app.UseMiddleware<ExceptionMiddleware>();
+            appExMiddleware.UseMiddleware<ExceptionMiddleware>();
         }
     }
 }
