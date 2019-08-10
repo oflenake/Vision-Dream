@@ -22,7 +22,7 @@ using System.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
-using Vision_Dream.AppModels;
+using Vision_Dream.Models;
 using Vision_Dream.ContractsService;
 using Vision_Dream.Middlewares;
 

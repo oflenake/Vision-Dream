@@ -7,7 +7,7 @@
     * 
     * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
     * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         ErrorDetails.cs
@@ -19,11 +19,11 @@
 
 using Newtonsoft.Json;
 
-namespace Vision_Dream.AppModels
+namespace Vision_Dream.Models
 {
     /// <summary>
     /// The <see cref="ErrorDetails"/> class is used in the <see cref="ExceptionMiddleware"/> 
-    /// class and in the <see cref="ExceptionMiddlewareExtensions"/> class as a custom exception 
+    /// class and in the <see cref="ExceptionExtensions"/> class as a custom exception 
     /// middleware that logs async messages, using a Status Code and a Message.
     /// </summary>
     public class ErrorDetails

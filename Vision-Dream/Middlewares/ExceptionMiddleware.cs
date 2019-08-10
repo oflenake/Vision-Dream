@@ -21,7 +21,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Vision_Dream.AppModels;
+using Vision_Dream.Models;
 using Vision_Dream.ContractsService;
 
 namespace Vision_Dream.Middlewares

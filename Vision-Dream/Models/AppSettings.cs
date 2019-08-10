@@ -7,7 +7,7 @@
     * 
     *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
     * _______________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         AppSettings.cs
@@ -17,7 +17,7 @@
 */
 #endregion
 
-namespace Vision_Dream.AppModels
+namespace Vision_Dream.Models
 {
     public class AppSettings
     {

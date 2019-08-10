@@ -5,10 +5,10 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core 2.1 (Vision-Dream) Library
-    *               Project Targeting .Net Core 2.1.
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
+    * Project:      Vision-Dream .Net Core 2.2 (Vision-Dream) Library
+    *               Project Targeting .Net Core 2.2.
     * Version:      v1.0.0
     * File:         GenerateApplicationNo.cs
     * Date:         2019-01-10
@@ -19,7 +19,7 @@
 
 using System;
 
-namespace Vision_Dream.Common
+namespace Vision_Dream.Security
 {
     public class GenerateApplicationNo
     {
