@@ -5,9 +5,9 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         EmployeeRelated.cs
@@ -24,22 +24,23 @@ namespace Vision_Dream.EntitiesService.RelatedModels
 {
     public class EmployeeRelated : IEntity
     {
-        public int EntityIDRel { get; set; }
-        public string FirstNameRel { get; set; }
-        public string LastNameRel { get; set; }
-        public string EmailRel { get; set; }
-        public string GenderRel { get; set; }
+        public int EntityID { get; set; }
+        public string RelFirstName { get; set; }
+        public string RelLastName { get; set; }
+        public string RelEmail { get; set; }
+        public string RelGender { get; set; }
 
-        public virtual IEnumerable<BankAccount> BankAccounts { get; set; }
+        public virtual IEnumerable<BankAccount> RelBankAccounts { get; set; }
 
         /// <see cref="EmployeeRelated"/> constructor enabled/disabled to configure lazy-loading.
-        public EmployeeRelated(Employee employee)
+        public EmployeeRelated(Employee employeeEntity)
         {
-            EntityIDRel = employee.EmployeeID;
-            FirstNameRel = employee.FirstName;
-            LastNameRel = employee.LastName;
-            EmailRel = employee.Email;
-            GenderRel = employee.Gender;
+            EntityID = employeeEntity.EmployeeID;
+            RelFirstName = employeeEntity.FirstName;
+            RelLastName = employeeEntity.LastName;
+            RelEmail = employeeEntity.Email;
+            RelGender = employeeEntity.Gender;
+            //RelBankAccounts = BankAccount;
         }
     }
 }

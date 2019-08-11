@@ -43,7 +43,7 @@ namespace Vision_Dream.Middlewares
         /// <summary> Field Properties
         /// </summary>
         private readonly IHostingEnvironment _HostingEnvironment;
-        public StreamWriter _StreamLogger;
+        public StreamWriter _LoggerFilter;
 
         public Exception _Exception { get; set; }
         public string _LogText { get; set; }
@@ -97,28 +97,28 @@ namespace Vision_Dream.Middlewares
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (!File.Exists($@"{_ErrorFolder}\{_TimeStamp}_Log.txt"))
             {
-                _StreamLogger = new StreamWriter($@"{_ErrorFolder}\{_TimeStamp}_Log.txt");
+                _LoggerFilter = new StreamWriter($@"{_ErrorFolder}\{_TimeStamp}_Log.txt");
             }
             else
             {
-                _StreamLogger = File.AppendText($@"{_ErrorFolder}\{_TimeStamp}_Log.txt");
+                _LoggerFilter = File.AppendText($@"{_ErrorFolder}\{_TimeStamp}_Log.txt");
             }
 
             var controllerName = (string)exceptionContext.RouteData.Values["controller"];
             var actionName = (string)exceptionContext.RouteData.Values["action"];
 
-            // Write log stream to file
-            _StreamLogger.WriteLine(Environment.NewLine + DateTime.Now);
-            _StreamLogger.WriteLine("--------------------------------------------------------------------------------------");
-            _StreamLogger.WriteLine("Controller Name :- " + controllerName);
-            _StreamLogger.WriteLine("Action Method Name :- " + actionName);
-            _StreamLogger.WriteLine("--------------------------------------------------------------------------------------");
-            _StreamLogger.WriteLine(objClass);
-            _StreamLogger.WriteLine(_LogText);
-            _StreamLogger.WriteLine();
+            // Write log stream filter to file
+            _LoggerFilter.WriteLine(Environment.NewLine + DateTime.Now);
+            _LoggerFilter.WriteLine("--------------------------------------------------------------------------------------");
+            _LoggerFilter.WriteLine("Controller Name :- " + controllerName);
+            _LoggerFilter.WriteLine("Action Method Name :- " + actionName);
+            _LoggerFilter.WriteLine("--------------------------------------------------------------------------------------");
+            _LoggerFilter.WriteLine(objClass);
+            _LoggerFilter.WriteLine(_LogText);
+            _LoggerFilter.WriteLine();
 
-            // Close log stream:
-            _StreamLogger.Close();
+            // Close log stream filter
+            _LoggerFilter.Close();
 
             if (!_HostingEnvironment.IsDevelopment())
             {

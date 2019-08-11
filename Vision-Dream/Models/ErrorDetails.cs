@@ -5,8 +5,8 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
     * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0

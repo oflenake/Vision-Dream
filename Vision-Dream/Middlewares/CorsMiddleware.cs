@@ -25,11 +25,11 @@ namespace Vision_Dream.Middlewares
     // Package that may need to be installed into the project: Microsoft.AspNetCore.Http.Abstractions
     public class CorsMiddleware
     {
-        private readonly RequestDelegate _next;
+        private readonly RequestDelegate _NextDelegate;
 
-        public CorsMiddleware(RequestDelegate next)
+        public CorsMiddleware(RequestDelegate nextDelegate)
         {
-            _next = next;
+            _NextDelegate = nextDelegate;
         }
 
         public Task Invoke(HttpContext httpContext)
@@ -38,7 +38,7 @@ namespace Vision_Dream.Middlewares
             httpContext.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
             httpContext.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Accept");
             httpContext.Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,PUT,PATCH,DELETE,OPTIONS");
-            return _next(httpContext);
+            return _NextDelegate(httpContext);
         }
     }
 }

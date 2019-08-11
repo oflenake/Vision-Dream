@@ -5,9 +5,9 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         RepositoryContext.cs
@@ -24,7 +24,7 @@ namespace Vision_Dream.EntitiesService
 {
     /// <summary>
     /// The <see cref="RepositoryContext"/> class is the main generic <see cref="DbContext"/> 
-    /// (EmployeeContext) class, that facilitates the <see cref="Employee"/> entity's 
+    /// (EmployeeContext) model class, that facilitates the <see cref="Employee"/> entity's 
     /// data and it's related data manipulations. It also facilitates the 
     /// <see cref="BankAccount"/> entity's data and it's related data manipulations.
     /// </summary>
@@ -32,7 +32,7 @@ namespace Vision_Dream.EntitiesService
     {
         #region Constructor
         /// <summary>
-        /// Inject the logger and repository parameter services inside the constructor.
+        /// Inject the loggerUtility and repositoryContext parameter services inside the constructor.
         /// </summary>
         public RepositoryContext(DbContextOptions<RepositoryContext> options)
             : base(options)
@@ -41,7 +41,7 @@ namespace Vision_Dream.EntitiesService
         #endregion
 
         public DbSet<Employee> EmployeeEntity { get; set; }
-        public DbSet<BankAccount> BankAccountEntity { get; set; }
+        public static DbSet<BankAccount> BankAccountEntity { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

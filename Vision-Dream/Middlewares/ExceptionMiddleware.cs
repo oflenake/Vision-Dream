@@ -30,16 +30,16 @@ namespace Vision_Dream.Middlewares
     {
         #region Fields
 
-        private readonly RequestDelegate _next;
-        private readonly ILoggerManager _logger;
+        private readonly RequestDelegate _NextDelegate;
+        private readonly ILoggerManagerUtility _LoggerUtility;
         #endregion
 
         #region Constructor
 
-        public ExceptionMiddleware(RequestDelegate next, ILoggerManager logger)
+        public ExceptionMiddleware(RequestDelegate nextDelegate, ILoggerManagerUtility loggerUtility)
         {
-            _logger = logger;
-            _next = next;
+            _LoggerUtility = loggerUtility;
+            _NextDelegate = nextDelegate;
         }
         #endregion
 
@@ -48,11 +48,11 @@ namespace Vision_Dream.Middlewares
         {
             try
             {
-                await _next(httpContext);
+                await _NextDelegate(httpContext);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong.{Environment.NewLine}Details: {ex}");
+                _LoggerUtility.LogError($"Something went wrong.{Environment.NewLine}Details: {ex}");
                 await HandleExceptionAsync(httpContext, ex);
             }
         }

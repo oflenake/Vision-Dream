@@ -30,7 +30,7 @@ namespace Vision_Dream.Extensions
 {
     public static class ExceptionExtensions
     {
-        public static void ConfigureExceptionHandler(this IApplicationBuilder appExHandler, ILoggerManager logger)
+        public static void ConfigureExceptionHandler(this IApplicationBuilder appExHandler, ILoggerManagerUtility loggerUtitlity)
         {
             // Extension method that registers the UseExceptionHandler middleware
             appExHandler.UseExceptionHandler(appError =>
@@ -43,7 +43,7 @@ namespace Vision_Dream.Extensions
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                     if (contextFeature != null)
                     {
-                        logger.LogError($"Something went wrong.{Environment.NewLine}Details: {contextFeature.Error}");
+                        loggerUtitlity.LogError($"Something went wrong.{Environment.NewLine}Details: {contextFeature.Error}");
 
                         await context.Response.WriteAsync(new ErrorDetails()
                         {

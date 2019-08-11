@@ -56,7 +56,7 @@ namespace Vision_Dream.Extensions
         // Custom Logger configuration
         public static void ConfigureLogger(this IServiceCollection services)
         {
-            services.AddSingleton<ILoggerManager, LoggerManager>();
+            services.AddSingleton<ILoggerManagerUtility, LoggerManagerUtility>();
         }
 
         // SQL DBContext Connection Configuration

@@ -5,9 +5,9 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         RepositoryWrapper.cs
@@ -30,36 +30,48 @@ namespace Vision_Dream.RepositoryService
     {
         #region Fields
 
-        private ILoggerManager _logger;
-        private string _component;
-        private string _process;
-        private string _message;
+        private ILoggerManagerUtility _LoggerUtility;
+        private string _Component;
+        private string _Process;
+        private string _Message;
 
-        private RepositoryContext _repoContext;
-        private IEmployeeRepository _employeeRepo;
-        private IBankAccountRepository _bankaccountRepo;
+        private RepositoryContext _RepositoryContext;
+        private IEmployeeRepository _EmployeeRepository;
+        private IBankAccountRepository _BankAccountRepository;
         #endregion
+
+        public RepositoryWrapper(ILoggerManagerUtility loggerUtility, RepositoryContext repositoryContext)
+        {
+            _LoggerUtility = loggerUtility;
+            _RepositoryContext = repositoryContext;
+
+            _Component = "RepositoryWrapper";
+            _Process = "RepositoryWrapper";
+            _Message = string.Format($"Initializing component: '{_Component}', using its constructor: '{_Component}.{_Process}'");
+
+            _LoggerUtility.LogInfo($"{_Message}.");
+        }
 
         public IEmployeeRepository EmployeeRepository
         {
             get
             {
-                _process = "EmployeeRepository";
+                _Process = "EmployeeRepository";
 
-                if (_employeeRepo == null)
+                if (_EmployeeRepository == null)
                 {
-                    _employeeRepo = new EmployeeRepository(_logger, _repoContext);
+                    _EmployeeRepository = new EmployeeRepository(_LoggerUtility, _RepositoryContext);
 
-                    _message = string.Format($"[{_component}] {_process} is 'null'. A new repository created " +
-                                             $"and initialized at: '{_component}.{_process}'");
-                    _logger.LogWarn($"{_message}.");
+                    _Message = string.Format($"[{_Component}] {_Process} is 'null'. A new repository created " +
+                                             $"and initialized at: '{_Component}.{_Process}'");
+                    _LoggerUtility.LogWarn($"{_Message}.");
                 }
 
-                _message = string.Format($"[{_component}] {_process} wraped for database operations " +
-                                         $"at: '{_component}.{_process}'");
-                _logger.LogInfo($"{_message}.");
+                _Message = string.Format($"[{_Component}] {_Process} wraped for database operations " +
+                                         $"at: '{_Component}.{_Process}'");
+                _LoggerUtility.LogInfo($"{_Message}.");
 
-                return _employeeRepo;
+                return _EmployeeRepository;
             }
         }
 
@@ -67,35 +79,23 @@ namespace Vision_Dream.RepositoryService
         {
             get
             {
-                _process = "BankAccountRepository";
+                _Process = "BankAccountRepository";
 
-                if (_bankaccountRepo == null)
+                if (_BankAccountRepository == null)
                 {
-                    _bankaccountRepo = new BankAccountRepository(_logger, _repoContext);
+                    _BankAccountRepository = new BankAccountRepository(_LoggerUtility, _RepositoryContext);
 
-                    _message = string.Format($"[{_component}] {_process} is 'null'. A new repository created " +
-                                             $"and initialized at: '{_component}.{_process}'");
-                    _logger.LogWarn($"{_message}.");
+                    _Message = string.Format($"[{_Component}] {_Process} is 'null'. A new repository created " +
+                                             $"and initialized at: '{_Component}.{_Process}'");
+                    _LoggerUtility.LogWarn($"{_Message}.");
                 }
 
-                _message = string.Format($"[{_component}] {_process} wraped for database operations " +
-                                         $"at: '{_component}.{_process}'");
-                _logger.LogInfo($"{_message}.");
+                _Message = string.Format($"[{_Component}] {_Process} wraped for database operations " +
+                                         $"at: '{_Component}.{_Process}'");
+                _LoggerUtility.LogInfo($"{_Message}.");
 
-                return _bankaccountRepo;
+                return _BankAccountRepository;
             }
-        }
-
-        public RepositoryWrapper(ILoggerManager logger, RepositoryContext repositoryContext)
-        {
-            _logger = logger;
-            _repoContext = repositoryContext;
-
-            _component = "RepositoryWrapper";
-            _process = "RepositoryWrapper";
-            _message = string.Format($"Initializing component: '{_component}', using its constructor: '{_component}.{_process}'");
-
-            _logger.LogInfo($"{_message}.");
         }
     }
 }

@@ -5,9 +5,9 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         EmployeeRepository.cs
@@ -37,8 +37,8 @@ namespace Vision_Dream.RepositoryService
     /// </summary>
     public class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
     {
-        public EmployeeRepository(ILoggerManager logger, RepositoryContext repositoryContext)
-            : base(logger, repositoryContext)
+        public EmployeeRepository(ILoggerManagerUtility loggerUtility, RepositoryContext repositoryContext)
+            : base(loggerUtility, repositoryContext)
         {
         }
 
@@ -59,13 +59,13 @@ namespace Vision_Dream.RepositoryService
         }
 
         // Get all related BankAccounts for a particular Employee
-        public async Task<EmployeeRelated> GetByIDRelatedAsyncData(int employeeID)
+        public async Task<EmployeeRelated> GetByIDRelatedAsyncData(int entityID)
         {
-            return await GetByIDBaseData(o => o.EmployeeID.Equals(employeeID))
-                .Select(employee => new EmployeeRelated(employee)
+            return await GetByIDBaseData(o => o.EmployeeID.Equals(entityID))
+                .Select(employeeEntity => new EmployeeRelated(employeeEntity)
                 {
-                    BankAccounts = RepositoryContext.BankAccountEntity
-                    .Where(a => a.ClientNumber.Equals(employee.EmployeeID))
+                    RelBankAccounts = RepositoryContext.BankAccountEntity
+                    .Where(a => a.UserID.Equals(employeeEntity.EmployeeID))
                     .ToList()
                 })
                 .SingleOrDefaultAsync();

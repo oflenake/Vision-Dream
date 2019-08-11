@@ -10,9 +10,9 @@
     * Project:      Vision-Dream .Net Core 2.2 (Vision-Dream) Library
     *               Project Targeting .Net Core 2.2.
     * Version:      v1.0.0
-    * File:         SwaggerServiceExtensions.cs
+    * File:         SwaggerExtensions.cs
     * Date:         2019-01-10
-    * Description:  This file contains the SwaggerServiceExtensions class. 
+    * Description:  This file contains the SwaggerExtensions class. 
     *               Class execution code.
 */
 #endregion
@@ -30,7 +30,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 namespace Vision_Dream.Extensions
 {
     /// <summary>
-    /// Extension <see cref="AddSwaggerDocumentation"/> method or middleware for <see cref="SwaggerServiceExtensions"/>.
+    /// Extension <see cref="AddSwaggerDocumentation"/> method or middleware for <see cref="SwaggerExtensions"/>.
     /// Swagger configuration in asp.net core for swagger version > 2.0.
     /// Reference From : https://ppolyzos.com/2017/10/30/add-jwt-bearer-authorization-to-swagger-and-asp-net-core/
     /// </summary>

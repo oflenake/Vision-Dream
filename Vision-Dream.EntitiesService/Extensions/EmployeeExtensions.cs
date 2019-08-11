@@ -5,9 +5,9 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         EmployeeExtensions.cs
@@ -22,17 +22,18 @@ using Vision_Dream.EntitiesService.Models;
 namespace Vision_Dream.EntitiesService.Extensions
 {
     /// <summary>
-    /// The static <see cref="EmployeeExtensions"/>, extension class helps to map <see cref="Map"/> 
-    /// the same two <see cref="Employee"/> object entities to each other, for further processing.
+    /// Static <see cref="EmployeeExtensions"/> class helps to map <see cref="Map"/> 
+    /// the same two <see cref="Employee"/> entities for further processing.
     /// </summary>
     public static class EmployeeExtensions
     {
-        public static void Map(this Employee dbEmployee, Employee employee)
+        public static void Map(this Employee destEmployee, Employee srcEmployee)
         {
-            dbEmployee.FirstName = employee.FirstName;
-            dbEmployee.LastName = employee.LastName;
-            dbEmployee.Email = employee.Email;
-            dbEmployee.Gender = employee.Gender;
+            destEmployee.EmployeeID = srcEmployee.EmployeeID;
+            destEmployee.FirstName = srcEmployee.FirstName;
+            destEmployee.LastName = srcEmployee.LastName;
+            destEmployee.Email = srcEmployee.Email;
+            destEmployee.Gender = srcEmployee.Gender;
         }
     }
 }

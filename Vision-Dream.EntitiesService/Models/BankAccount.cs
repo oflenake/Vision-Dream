@@ -5,9 +5,9 @@
     * Email:        visiondreamict@gmail.com
     * Website:      www.visiondreamict.wordpress.com
     * 
-    * Copyright (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
-    * ___________________________________________________________________
-    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.1.
+    *               (c) 2019 Vision-Dream ICT Solutions. All rights reserved.
+    * _______________________________________________________________________
+    * Project:      Vision-Dream .Net Core library, targeting .Net Core 2.2.
     *               Library is generic to cater for multiple solutions.
     * Version:      v1.0.0
     * File:         BankAccount.cs
@@ -26,7 +26,7 @@ namespace Vision_Dream.EntitiesService.Models
     {
         [Key]
         public int BankAccountNumber { get; set; }
-        public IEntity IDRel { get; set; }
+        public int UserID { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public int ClientNumber { get; set; }
         public string AccountName { get; set; }
