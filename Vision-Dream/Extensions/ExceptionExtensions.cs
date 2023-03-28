@@ -30,7 +30,8 @@ namespace Vision_Dream.Extensions
 {
     public static class ExceptionExtensions
     {
-        public static void ConfigureExceptionHandler(this IApplicationBuilder appExHandler, ILoggerManagerUtility loggerUtitlity)
+        public static void ConfigureExceptionHandler(this IApplicationBuilder appExHandler, 
+            ILoggerManagerUtility loggerUtitlity)
         {
             // Extension method that registers the UseExceptionHandler middleware
             appExHandler.UseExceptionHandler(appError =>
